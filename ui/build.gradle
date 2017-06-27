@@ -1,0 +1,47 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	springCloudVersion = 'Dalston.SR1'
+}
+
+dependencies {
+	// config Server 配置依赖
+	compile('org.springframework.cloud:spring-cloud-config-client')
+	// Eureka 客户端依赖
+	compile('org.springframework.cloud:spring-cloud-starter-eureka')
+	// 断路器依赖
+	compile('org.springframework.cloud:spring-cloud-starter-hystrix')
+	// 支持路由网关依赖
+	compile('org.springframework.cloud:spring-cloud-starter-zuul')
+	// feign负责均衡依赖
+	compile('org.springframework.cloud:spring-cloud-starter-feign')
+	// ribbon负责均衡依赖
+	compile('org.springframework.cloud:spring-cloud-starter-ribbon')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}

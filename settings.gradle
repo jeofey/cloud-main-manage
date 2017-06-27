@@ -1,0 +1,6 @@
+rootProject.name = 'cloud-main-manager'
+include 'discovery'
+include 'config'
+include 'person'
+include 'ui'
+include 'monitor'

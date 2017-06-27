@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: person
+  cloud:
+      config:
+        enabled: true
+        discovery:
+          enabled: true
+          service-id: CONFIG #指定Config Server的服务名，通过Eureka Server 发现Config Server。获取person.yml
+
+eureka:
+  instance:
+    non-secure-port: ${server.port:8082}
+  client:
+    service-url:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/

@@ -1,0 +1,11 @@
+#application.yml 配置其他应用所需的配置文件位于类路径下的config目录
+#配置文件命名规则：应用名+profile.yml
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+
+server:
+  port: 8888
